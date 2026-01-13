@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public static class Arrays
 {
     /// <summary>
@@ -99,13 +101,14 @@ public static class Arrays
         Console.WriteLine("data before is " + "[{0}]", string.Join(", ", data));
 
 
-        for (var i = 0; i < data.Count; i++)
+        for (var i = 0; i < data.Count; ++i)
         {
-            data.Insert(i,second_half[i]);
+            Debug.WriteLine("i: "+i);
+            data[i] = second_half[i];
         }
 
-        Console.WriteLine("data is " + "[{0}]", string.Join(", ", data));
-        Console.WriteLine("second_half is " + "[{0}]", string.Join(", ", second_half));
+        Debug.WriteLine("data is " + "[{0}]", string.Join(", ", data));
+        Debug.WriteLine("second_half is " + "[{0}]", string.Join(", ", second_half));
 
 
 

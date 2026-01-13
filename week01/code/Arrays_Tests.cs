@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static System.Console;
 
 // DO NOT MODIFY THIS FILE
 

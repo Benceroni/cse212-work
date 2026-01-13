@@ -85,7 +85,8 @@ public static class Arrays
 
         // combine these two arrays
 
-        // data = arrays_combined;
+        // loop through 
+        // data[i] = arrays_combined[i];
 
         List<int> first_half = data.GetRange(0, data.Count - amount);
         List<int> second_half = data.GetRange(data.Count - amount, amount);

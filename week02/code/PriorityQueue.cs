@@ -1,5 +1,7 @@
 ﻿public class PriorityQueue
 {
+    
+
     private List<PriorityItem> _queue = new();
 
     /// <summary>
@@ -24,14 +26,21 @@
 
         // Find the index of the item with the highest priority to remove
         var highPriorityIndex = 0;
-        for (int index = 1; index < _queue.Count - 1; index++)
+        for (int index = 1; index < _queue.Count; index++)
         {
+            // Console.WriteLine(string.Join(", ", _queue));
+            // Console.WriteLine("\n" + "Comparing: "+ _queue[index].Value + " to: "+  _queue[highPriorityIndex].Value);
             if (_queue[index].Priority >= _queue[highPriorityIndex].Priority)
                 highPriorityIndex = index;
+                
+            // Console.WriteLine(_queue[highPriorityIndex].Value + " is higher priority" + "\n");  
         }
 
         // Remove and return the item with the highest priority
+        Console.WriteLine("Returning and Removing: " + _queue[highPriorityIndex].Value);
         var value = _queue[highPriorityIndex].Value;
+        _queue.RemoveAt(highPriorityIndex);
+        Console.WriteLine("Returning: " + value);
         return value;
     }
 
@@ -59,5 +68,18 @@ internal class PriorityItem
     public override string ToString()
     {
         return $"{Value} (Pri:{Priority})";
+    }
+}
+
+internal class Icecream
+{
+
+    public readonly string Flavor;
+    public readonly int Priority;
+
+    internal Icecream(string flavor, int priority)
+    {
+        Flavor = flavor;
+        Priority = priority; 
     }
 }

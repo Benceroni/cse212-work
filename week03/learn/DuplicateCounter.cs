@@ -24,7 +24,32 @@
 
     private static int CountDuplicates(int[] data)
     {
-        // Add code here.
-        return 0;
+        // I start with a list of data.
+        // I need to iterate through this list and collect each unique integer, then when I come across another, add it to the total.
+
+        //create empty hash set
+        //create counter variable
+        //iterate through each number in "data"
+        //determine if value is in data then
+        //if no: add to data
+        //if yes: add 1 to duplicate counter.
+
+        HashSet<int> originals = [];
+
+        int duplicates = 0;
+
+        foreach (int datum in data)
+        {
+            if (originals.Contains(datum))
+            {
+                duplicates +=1;
+            }
+            else
+            {
+                originals.Add(datum);
+            }
+        }
+
+        return duplicates;
     }
 }

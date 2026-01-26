@@ -23,6 +23,12 @@
             }
         }
 
+        // create set of unique letters
+        // loop through each letter in string
+        // if statement to check if letter in unique letters
+        //       if not unique return false
+        //      if unique add to the unique letters
+
         return true;
     }
 }

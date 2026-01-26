@@ -25,12 +25,43 @@ public class Basketball
         reader.ReadFields(); // ignore header row
         while (!reader.EndOfData) {
             var fields = reader.ReadFields()!;
-            var playerId = fields[0];
+            string playerId = fields[0];
             var points = int.Parse(fields[8]);
+
+            if (players.ContainsKey(playerId))
+            {
+                players[playerId] += points;
+                // players[points] += points;
+            }
+            else
+            {
+                players[playerId] = points;
+            }
+        }
+
+        foreach(var datum in players)
+        {
+            Console.WriteLine(datum);
         }
 
         Console.WriteLine($"Players: {{{string.Join(", ", players)}}}");
 
         var topPlayers = new string[10];
+
+        // List[string,int] playersArray = players;
+
+        // var array = Array.from(players,([key,value]));
+
+        //iterate through each player
+        //check if in dictionary
+        //add to players dictionary if not
+        //add scores in there somewhere
+
+
+
+        // foreach(var player in )
+
+
+
     }
 }

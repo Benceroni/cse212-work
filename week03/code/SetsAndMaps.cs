@@ -22,8 +22,9 @@ public static class SetsAndMaps
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
     public static string[] FindPairs(string[] words)
     {
-        string[] pairs = [];
+        List<string> pairs = [];
 
+        // var data = new HashSet<string>(words);
         var found = new HashSet<string>();
 
         foreach (string word in words)
@@ -31,18 +32,21 @@ public static class SetsAndMaps
             string reversed = null;
             for (var i = 0; i < word.Length; i++)
             {
-                reversed += word[word.Length-1-i];
+                reversed += word[word.Length - 1 - i];
             }
-            if words.Contains(reversed)
+            if (found.Contains(reversed))
             {
-                
-            } 
+                pairs.Add($"{word} & {reversed}");
+
+            }
+            else
+            {
+                found.Add(word);
+            }
         }
+        string[] pairs_string = pairs.ToArray();
 
-        pairs.Append("yuh");
-
-
-        return pairs;
+        return pairs_string;
     }
 
     /// <summary>
@@ -96,8 +100,123 @@ public static class SetsAndMaps
     /// </summary>
     public static bool IsAnagram(string word1, string word2)
     {
-        // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        // Debug.Print($"{word1} {word2}");
+
+        string sanitizedWord1 = remove_spaces(word1.ToLower());
+        string sanitizedWord2 = remove_spaces(word2.ToLower());
+
+        if (sanitizedWord1.Count() != sanitizedWord2.Count())
+        {
+            return false;
+        }
+
+        string remove_spaces(string spaced_word)
+        {
+            string newString = "";
+
+            for (int i = 0; i< spaced_word.Length; i++)
+            {
+                if (spaced_word[i] != ' ')
+                {
+                    newString += spaced_word[i];
+                }
+            }
+            return newString;
+        }
+
+        SortedDictionary<char,int> dict1 = word_to_char_dict(sanitizedWord1);
+
+        SortedDictionary<char,int> dict2 = word_to_char_dict(sanitizedWord2);
+
+        SortedDictionary<char,int> word_to_char_dict(string _word)
+        {
+            SortedDictionary<char,int> returnDict =[];
+
+            foreach (char i in _word)
+                {
+                    Char letter = Char.ToLower(i);
+                    if (letter == ' ')
+                    {
+                        continue;
+                    }
+                    if (returnDict.ContainsKey(letter))
+                    {
+                        returnDict[letter] += 1;
+                    }
+                    else
+                    {
+                        returnDict[letter] = 1;
+                    }
+                }
+            
+            return returnDict;
+
+        }
+
+        foreach(var value in dict1)
+        {
+            Debug.Print(value.ToString());
+            char index = value.Key;
+            if (!dict2.ContainsKey(index))
+            {
+                return false;
+            }
+            if (dict1[index] != dict2[index])
+            {
+                return false;
+            }
+        }
+        return true;
+
+        // string word1clean = word1.Replace(" ", "").ToLower();
+        // string word2clean = word2.Replace(" ", "").ToLower();
+
+        
+
+        // // Console.WriteLine($"{word1clean} {word2clean}");
+
+        // if (word1clean.Count() == word2clean.Count())
+        // {
+        //     return false;
+        // }
+
+        // Dictionary<char,int> wordDict1 = word_to_char_count(word1clean);
+        // Dictionary<char,int> wordDict2 = word_to_char_count(word2clean);
+
+        // Console.WriteLine(wordDict1);
+        // Console.WriteLine(wordDict2);
+
+        // Dictionary<char,int> word_to_char_count(string word)
+        // {
+        //     var charDictionary = new Dictionary<char,int>();
+
+        //     foreach (char i in word)
+        //     {
+        //         if (charDictionary.ContainsKey(i))
+        //         {
+        //             charDictionary[i] += 1;
+        //         }
+        //         else
+        //         {
+        //             charDictionary[i] = 1;
+        //         }
+        //     }
+
+        //     return charDictionary;
+        // }
+
+        // foreach (var item in wordDict1)
+        // {
+        //     Debug.WriteLine($"{wordDict1[item.Key]} = {wordDict2[item.Key]}?");
+        //     if (wordDict1[item.Key] != wordDict2[item.Key])
+        //     {
+        //         return false;
+        //     }
+        //     return true;
+        // }
+        
+
+        // return false;
     }
 
     /// <summary>
@@ -131,6 +250,8 @@ public static class SetsAndMaps
         // on those classes so that the call to Deserialize above works properly.
         // 2. Add code below to create a string out each place a earthquake has happened today and its magitude.
         // 3. Return an array of these string descriptions.
+
+
         return [];
     }
 }

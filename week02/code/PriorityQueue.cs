@@ -80,6 +80,6 @@ internal class Icecream
     internal Icecream(string flavor, int priority)
     {
         Flavor = flavor;
-        Priority = priority; 
+        Priority = priority;
     }
 }

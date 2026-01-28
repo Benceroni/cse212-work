@@ -189,46 +189,46 @@ public class IsAnagramTests
         Assert.IsFalse(SetsAndMaps.IsAnagram("Eleven plus One", "Twelve Plus One"));
     }
 
-    // [TestMethod, Timeout(60_000)]
-    // public void IsAnagram_Efficiency()
-    // {
-    //     // Calibrate baseline CPU performance
-    //     double CalibrateCpuSpeed()
-    //     {
-    //         var sw = Stopwatch.StartNew();
-    //         long sum = 0;
-    //         for (int i = 0; i < 400_000_000; i++) sum += i;
-    //         sw.Stop();
-    //         return sw.Elapsed.TotalMilliseconds;
-    //     }
+    [TestMethod, Timeout(60_000)]
+    public void IsAnagram_Efficiency()
+    {
+        // Calibrate baseline CPU performance
+        double CalibrateCpuSpeed()
+        {
+            var sw = Stopwatch.StartNew();
+            long sum = 0;
+            for (int i = 0; i < 400_000_000; i++) sum += i;
+            sw.Stop();
+            return sw.Elapsed.TotalMilliseconds;
+        }
 
-    //     double baseline = CalibrateCpuSpeed();
+        double baseline = CalibrateCpuSpeed();
 
-    //     // Create test data
-    //     var rand = new Random();
-    //     var length = 60_000_000;
-    //     var a_array = new char[length];
-    //     var b_array = new char[length];
+        // Create test data
+        var rand = new Random();
+        var length = 60_000_000;
+        var a_array = new char[length];
+        var b_array = new char[length];
 
-    //     for (int i = 0; i < length; ++i)
-    //     {
-    //         char c = (char)rand.Next(256);
-    //         a_array[i] = c;
-    //         b_array[i] = c;
-    //     }
+        for (int i = 0; i < length; ++i)
+        {
+            char c = (char)rand.Next(256);
+            a_array[i] = c;
+            b_array[i] = c;
+        }
 
-    //     // Measure student code
-    //     var sw = Stopwatch.StartNew();
-    //     var actual = SetsAndMaps.IsAnagram(new string(a_array), new string(b_array));
-    //     sw.Stop();
+        // Measure student code
+        var sw = Stopwatch.StartNew();
+        var actual = SetsAndMaps.IsAnagram(new string(a_array), new string(b_array));
+        sw.Stop();
 
-    //     double elapsed = sw.Elapsed.TotalMilliseconds;
-    //     double ratio = elapsed / baseline;
+        double elapsed = sw.Elapsed.TotalMilliseconds;
+        double ratio = elapsed / baseline;
 
-    //     Debug.WriteLine($"Elapsed: {elapsed:F2}ms | Baseline: {baseline:F2}ms | Ratio: {ratio:F2}");
-    //     Assert.IsTrue(ratio < 15.0, "Your algorithm is too slow. Make sure it runs in O(n) time.");
-    //     Assert.IsTrue(actual);
-    // }
+        Debug.WriteLine($"Elapsed: {elapsed:F2}ms | Baseline: {baseline:F2}ms | Ratio: {ratio:F2}");
+        Assert.IsTrue(ratio < 15.0, "Your algorithm is too slow. Make sure it runs in O(n) time.");
+        Assert.IsTrue(actual);
+    }
 }
 
 [TestClass]

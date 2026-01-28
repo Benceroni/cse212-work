@@ -32,7 +32,7 @@ public class Maze
     /// </summary>
     public void MoveLeft()
     {
-        if _currX
+
     }
 
     /// <summary>
@@ -59,14 +59,14 @@ public class Maze
     /// </summary>
     public void MoveDown()
     {
-        try 
-        {
-            
-        }
+        // try 
+        // {
+        //     IsMoveLegal(_currX, _currY);
+        // }
         
-        {
+        // {
             
-        }
+        // }
     }
 
 

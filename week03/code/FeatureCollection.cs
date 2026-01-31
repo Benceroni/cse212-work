@@ -1,5 +1,15 @@
 public class FeatureCollection
 {
-    // TODO Problem 5 - ADD YOUR CODE HERE
-    // Create additional classes as necessary
+    public Feature[] Features { get; set; }
 }
+
+public class Feature
+    {
+        public Geography Properties { get; set; }
+    }
+
+public class Geography
+    {
+        public float Mag { get; set; }
+        public string Place { get; set; }
+    }

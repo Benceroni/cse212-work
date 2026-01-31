@@ -32,7 +32,7 @@ public class Maze
     /// </summary>
     public void MoveLeft()
     {
-        // FILL IN CODE
+
     }
 
     /// <summary>
@@ -59,8 +59,17 @@ public class Maze
     /// </summary>
     public void MoveDown()
     {
-        // FILL IN CODE
+        // try 
+        // {
+        //     IsMoveLegal(_currX, _currY);
+        // }
+        
+        // {
+            
+        // }
     }
+
+
 
     public string GetStatus()
     {

@@ -14,8 +14,19 @@ public static class Recursion
     /// </summary>
     public static int SumSquaresRecursive(int n)
     {
-        // TODO Start Problem 1
-        return 0;
+        if (n <= 0)
+        {
+            return 0;
+        }
+
+        if (n == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return n*n + SumSquaresRecursive(n-1);
+        }
     }
 
     /// <summary>
@@ -39,7 +50,7 @@ public static class Recursion
     /// </summary>
     public static void PermutationsChoose(List<string> results, string letters, int size, string word = "")
     {
-        // TODO Start Problem 2
+        //
     }
 
     /// <summary>
@@ -75,7 +86,7 @@ public static class Recursion
     ///
     /// These final leaps give us a sum:
     ///
-    /// CountWaysToClimb(s) = CountWaysToClimb(s-1) + 
+    /// CountWaysToClimb(s) = CountWaysToClimb(s-1) +
     ///                       CountWaysToClimb(s-2) +
     ///                       CountWaysToClimb(s-3)
     ///
